@@ -12,6 +12,8 @@ Vue (读音 /vjuː/，类似于 **view**) 是一套用于构建用户界面的**
 
 <VideoLesson href="https://www.vuemastery.com/courses/intro-to-vue-3/intro-to-vue3" title="Watch a free video course on Vue Mastery">Watch a free video course on Vue Mastery</VideoLesson>
 
+<common-vuemastery-video-modal/>
+
 ## 起步 {#getting-started}
 
 <p>
