@@ -4,7 +4,7 @@ badges:
   - breaking
 ---
 
-# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" />
+# {{ $frontmatter.title }} <MigrationBadges :badges="$frontmatter.badges" /> {#frontmatter-title}
 
 在 Vue 2 中，在 `v-for` 里使用的 `ref` attribute 会用 ref 数组填充相应的 `$refs` property。当存在嵌套的 `v-for` 时，这种行为会变得不明确且效率低下。
 
