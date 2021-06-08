@@ -6,7 +6,7 @@ name: Build And Deploy
 # events but only for the master branch
 on:
   push:
-    branches: [ cn ]
+    branches: [ main ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -22,8 +22,8 @@ jobs:
 
     - name: Check Build
       run: |
-        npm i
-        npm run build
+        yarn
+        yarn build
         sudo -i
         sudo chown -R $USER ./src/.vuepress/dist
         
