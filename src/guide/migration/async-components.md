@@ -3,27 +3,27 @@ badges:
   - new
 ---
 
-# Async Components <MigrationBadges :badges="$frontmatter.badges" />
+# 异步组件 <MigrationBadges :badges="$frontmatter.badges" /> {#async-components}
 
-## Overview
+## 概览 {#overview}
 
-Here is a high level overview of what has changed:
+以下是对变化的高层次概述：
 
-- New `defineAsyncComponent` helper method that explicitly defines async components
-- `component` option renamed to `loader`
-- Loader function does not inherently receive `resolve` and `reject` arguments and must return a Promise
+- 新的 `defineAsyncComponent` 助手方法，用于显式地定义异步组件
+- `component` 选项重命名为 `loader`
+- Loader 函数本身不再接收 `resolve` 和 `reject` 参数，且必须返回一个 Promise
 
-For a more in-depth explanation, read on!
+如需更深入的解释，请继续阅读！
 
-## Introduction
+## 介绍 {#introduction}
 
-Previously, async components were created by simply defining a component as a function that returned a promise, such as:
+以前，异步组件是通过将组件定义为返回 Promise 的函数来创建的，例如：
 
 ```js
 const asyncModal = () => import('./Modal.vue')
 ```
 
-Or, for the more advanced component syntax with options:
+或者，对于带有选项的更高阶的组件语法：
 
 ```js
 const asyncModal = {
@@ -35,19 +35,19 @@ const asyncModal = {
 }
 ```
 
-## 3.x Syntax
+## 3.x 语法 {#_3-x-syntax}
 
-Now, in Vue 3, since functional components are defined as pure functions, async components definitions need to be explicitly defined by wrapping it in a new `defineAsyncComponent` helper:
+现在，在 Vue 3 中，由于函数式组件被定义为纯函数，因此异步组件的定义需要通过将其包裹在新的 `defineAsyncComponent` 助手方法中来显式地定义：
 
 ```js
 import { defineAsyncComponent } from 'vue'
 import ErrorComponent from './components/ErrorComponent.vue'
 import LoadingComponent from './components/LoadingComponent.vue'
 
-// Async component without options
+// 不带选项的异步组件
 const asyncModal = defineAsyncComponent(() => import('./Modal.vue'))
 
-// Async component with options
+// 带选项的异步组件
 const asyncModalWithOptions = defineAsyncComponent({
   loader: () => import('./Modal.vue'),
   delay: 200,
@@ -57,11 +57,11 @@ const asyncModalWithOptions = defineAsyncComponent({
 })
 ```
 
-::: tip NOTE
-Vue Router supports a similar mechanism for asynchronously loading route components, known as *lazy loading*. Despite the similarities, this feature is distinct from Vue's support for async components. You should **not** use `defineAsyncComponent` when configuring route components with Vue Router. You can read more about this in the [Lazy Loading Routes](https://next.router.vuejs.org/guide/advanced/lazy-loading.html) section of the Vue Router documentation.
+::: tip 注意
+Vue Router 支持一个类似的机制来异步加载路由组件，也就是俗称的*懒加载*。尽管类似，这个功能和 Vue 支持的异步组件是不同的。当用 Vue Router 配置路由组件时，你**不**应该使用 `defineAsyncComponent`。你可以在 Vue Router 文档的[懒加载路由](https://next.router.vuejs.org/guide/advanced/lazy-loading.html)章节阅读更多相关内容。
 :::
 
-Another change that has been made from 2.x is that the `component` option is now renamed to `loader` in order to accurately communicate that a component definition cannot be provided directly.
+对 2.x 所做的另一个更改是，`component` 选项现在被重命名为 `loader`，以便准确地传达不能直接提供组件定义的信息。
 
 ```js{4}
 import { defineAsyncComponent } from 'vue'
@@ -75,15 +75,15 @@ const asyncModalWithOptions = defineAsyncComponent({
 })
 ```
 
-In addition, unlike 2.x, the loader function no longer receives the `resolve` and `reject` arguments and must always return a Promise.
+此外，与 2.x 不同，loader 函数不再接收 `resolve` 和 `reject` 参数，且必须始终返回 Promise。
 
 ```js
-// 2.x version
+// 2.x 版本
 const oldAsyncComponent = (resolve, reject) => {
   /* ... */
 }
 
-// 3.x version
+// 3.x 版本
 const asyncComponent = defineAsyncComponent(
   () =>
     new Promise((resolve, reject) => {
@@ -92,6 +92,6 @@ const asyncComponent = defineAsyncComponent(
 )
 ```
 
-For more information on the usage of async components, see:
+有关异步组件用法的详细信息，请参阅：
 
-- [Guide: Dynamic & Async Components](/guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+- [指南：动态 & 异步组件](/guide/component-dynamic-async.html#在动态组件上使用-keep-alive)
