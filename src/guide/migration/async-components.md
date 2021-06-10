@@ -94,4 +94,9 @@ const asyncComponent = defineAsyncComponent(
 
 有关异步组件用法的详细信息，请参阅：
 
+<<<<<<< HEAD
 - [指南：动态 & 异步组件](/guide/component-dynamic-async.html#在动态组件上使用-keep-alive)
+=======
+- [Guide: Dynamic & Async Components](/guide/component-dynamic-async.html#dynamic-components-with-keep-alive)
+- [Migration build flag: `COMPONENT_ASYNC`](migration-build.html#compat-configuration)
+>>>>>>> 6b6019913ec7df6212a95c8f3a098edf17582047
