@@ -69,15 +69,11 @@ export default {
 
 - `itemRefs` 不必是数组：它也可以是一个对象，其 ref 会通过迭代的 key 被设置。
 
-<<<<<<< HEAD
 - 如果需要，`itemRef` 也可以是响应式的且可以被监听。
-=======
-- This also allows `itemRefs` to be made reactive and watched, if needed.
 
-## Migration Strategy
+## 迁移策略 {#migration-strategy}
 
-[Migration build flags:](migration-build.html#compat-configuration)
+[迁移构建的 flag](migration-build.html#compat-configuration)
 
 - `V_FOR_REF`
 - `COMPILER_V_FOR_REF`
->>>>>>> 6b6019913ec7df6212a95c8f3a098edf17582047
