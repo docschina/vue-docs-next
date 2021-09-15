@@ -80,6 +80,7 @@ const sidebar = {
       title: 'Advanced Guides',
       collapsable: false,
       children: [
+        '/guide/web-components',
         {
           title: 'Reactivity',
           children: [
@@ -106,7 +107,12 @@ const sidebar = {
     {
       title: 'Scaling Up',
       collapsable: false,
-      children: ['/guide/routing', '/guide/state-management', '/guide/ssr', '/guide/security']
+      children: [
+        '/guide/routing',
+        '/guide/state-management',
+        '/guide/ssr',
+        '/guide/security'
+      ]
     },
     {
       title: 'Accessibility',
@@ -148,10 +154,33 @@ const sidebar = {
       children: [
         '/api/basic-reactivity',
         '/api/refs-api',
-        '/api/computed-watch-api'
+        '/api/computed-watch-api',
+        '/api/effect-scope',
       ]
     },
-    '/api/composition-api'
+    '/api/composition-api',
+    {
+      title: 'Single File Components',
+      collapsable: false,
+      children: [
+        {
+          title: 'Spec',
+          path: '/api/sfc-spec'
+        },
+        {
+          title: 'Tooling',
+          path: '/api/sfc-tooling'
+        },
+        {
+          title: '<script setup>',
+          path: '/api/sfc-script-setup'
+        },
+        {
+          title: '<style> Features',
+          path: '/api/sfc-style'
+        }
+      ]
+    }
   ],
   examples: [
     {
@@ -267,6 +296,7 @@ module.exports = {
     ['link', { rel: 'manifest', href: '/manifest.json' }],
     ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ['meta', { name: 'apple-mobile-web-app-capable', content: 'yes' }],
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
     [
       'meta',
       { name: 'apple-mobile-web-app-status-bar-style', content: 'black' }
@@ -379,8 +409,7 @@ module.exports = {
               },
               {
                 text: 'Vue Test Utils',
-                link:
-                  'https://next.vue-test-utils.vuejs.org/guide/'
+                link: 'https://next.vue-test-utils.vuejs.org/guide/'
               },
               {
                 text: 'Devtools',
@@ -454,7 +483,7 @@ module.exports = {
       }
     ],
     repo: 'vuejs/docs',
-    editLinks: false,
+    editLinks: true,
     editLinkText: 'Edit this on GitHub!',
     lastUpdated: 'Last updated',
     docsDir: 'src',
@@ -491,11 +520,18 @@ module.exports = {
           const date = new Date(timestamp)
 
           const digits = [
-            date.getUTCFullYear(), date.getUTCMonth() + 1, date.getUTCDate(),
-            date.getUTCHours(), date.getUTCMinutes(), date.getUTCSeconds()
+            date.getUTCFullYear(),
+            date.getUTCMonth() + 1,
+            date.getUTCDate(),
+            date.getUTCHours(),
+            date.getUTCMinutes(),
+            date.getUTCSeconds()
           ].map(num => String(num).padStart(2, '0'))
 
-          return '{0}-{1}-{2}, {3}:{4}:{5} UTC'.replace(/{(\d)}/g, (_, num) => digits[num])
+          return '{0}-{1}-{2}, {3}:{4}:{5} UTC'.replace(
+            /{(\d)}/g,
+            (_, num) => digits[num]
+          )
         }
       }
     ],
