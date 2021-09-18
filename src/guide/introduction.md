@@ -299,7 +299,11 @@ app.mount('#todo-list-app')
 
 尽管这只是一个刻意设计的例子，但是我们已经设法将应用分割成了两个更小的单元。子单元通过 prop 接口与父单元进行了良好的解耦。我们现在可以进一步改进 `<todo-item>` 组件，提供更为复杂的模板和逻辑，而不会影响到父应用。
 
+<<<<<<< HEAD
 在一个大型应用中，有必要将整个应用程序划分为多个组件，以使开发更易管理。在[后续教程](component-basics.md)中我们将详述组件，不过这里有一个 (假想的) 例子，以展示使用了组件的应用模板是什么样的：
+=======
+In a large application, it is necessary to divide the whole app into components to make development manageable. We will talk a lot more about components [later in the guide](component-basics.html), but here's an (imaginary) example of what an app's template might look like with components:
+>>>>>>> 5a4e18786f674948d98bfa6e3d4b0deabfe1af0c
 
 ```html
 <div id="app">
@@ -313,6 +317,7 @@ app.mount('#todo-list-app')
 
 ### 与自定义元素的关系 {#relation-to-custom-elements}
 
+<<<<<<< HEAD
 你可能已经注意到 Vue 组件非常类似于自定义元素——它是 [Web 组件规范](https://www.w3.org/wiki/WebComponents/)的一部分，这是因为 Vue 的组件语法部分参考了该规范。例如 Vue 组件实现了 [Slot API](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md) 与 `is` attribute。但是，还是有几个关键差别：
 
 1. Web Components 规范已经完成并通过，但未被所有浏览器原生实现。目前 Safari 10.1+、Chrome 54+ 和 Firefox 63+ 原生支持 Web Components。相比之下，Vue 组件不需要任何 polyfill，并且在所有支持的浏览器之下表现一致 (IE 11 除外——请移步阅读[这里](https://github.com/vuejs/rfcs/blob/master/active-rfcs/0038-vue3-ie11-support.md)的详情)。必要时，Vue 组件也可以包裹于原生自定义元素之内。
@@ -322,6 +327,13 @@ app.mount('#todo-list-app')
 2. Vue 组件提供了纯自定义元素所不具备的一些重要功能，最突出的是跨组件数据流、自定义事件通信以及构建工具集成。
 
 虽然 Vue 内部没有使用自定义元素，不过在应用使用自定义元素、或以自定义元素形式发布时，[依然有很好的互操作性](https://custom-elements-everywhere.com/#vue)。Vue CLI 也支持将 Vue 组件构建成为原生的自定义元素。
+=======
+You may have noticed that Vue components look similar to **Custom Elements**, which are part of the [Web Components Spec](https://www.w3.org/wiki/WebComponents/). Indeed, parts of Vue's component design (for example the slot API) were influenced by the spec before it was natively implemented in browsers.
+
+The main difference is that Vue's component model is designed as a part of a coherent framework that provides many additional features necessary for building non-trivial applications, for example reactive templating and state management - both of which the spec does not cover.
+
+Vue also provides great support for both consuming and creating custom elements. For more details, check out the [Vue and Web Components](/guide/web-components.html) section.
+>>>>>>> 5a4e18786f674948d98bfa6e3d4b0deabfe1af0c
 
 ## 准备好了吗？ {#ready-for-more}
 
