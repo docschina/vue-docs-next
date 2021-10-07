@@ -97,7 +97,12 @@ Vue projects can quickly be set up with Vite by running the following commands i
 With npm:
 
 ```bash
-$ npm init vite <project-name> -- --template vue
+# npm 6.x
+$ npm init vite@latest <project-name> --template vue
+
+# npm 7+, extra double-dash is needed:
+$ npm init vite@latest <project-name> -- --template vue
+
 $ cd <project-name>
 $ npm install
 $ npm run dev
@@ -133,7 +138,7 @@ Global builds are not [UMD](https://github.com/umdjs/umd) builds. They are built
 
 #### `vue(.runtime).esm-browser(.prod).js`:
 
-- For usage via native ES modules imports (in browser via `<script type="module">`.
+- For usage via native ES modules imports (in browser via `<script type="module">`).
 - Shares the same runtime compilation, dependency inlining and hard-coded prod/dev behavior with the global build.
 
 ### With a Bundler
