@@ -95,11 +95,19 @@ Vue.createApp(AttributeBinding).mount('#bind-attribute')
 
 <common-codepen-snippet title="Attribute dynamic binding" slug="KKpRVvJ" />
 
+<<<<<<< HEAD
 这里我们遇到了一点新东西。你看到的 `v-bind` attribute 被称为**指令**。指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊 attribute。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“_将这个元素节点的 `title` attribute 和当前活跃实例的 `message` property 保持一致_”。
+=======
+Here we're encountering something new. The `v-bind` attribute you're seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here, we're basically saying "_keep this element's `title` attribute up-to-date with the `message` property on the current active instance._"
+>>>>>>> 009706511b33add39286ad423ce0fac4c937f963
 
 ## 处理用户输入 {#handling-user-input}
 
+<<<<<<< HEAD
 为了让用户和应用进行交互，我们可以用 `v-on` 指令添加一个事件监听器，通过它调用在实例中定义的方法：
+=======
+To let users interact with our app, we can use the `v-on` directive to attach event listeners that invoke methods on our instances:
+>>>>>>> 009706511b33add39286ad423ce0fac4c937f963
 
 ```html
 <div id="event-handling">
@@ -222,12 +230,24 @@ Vue.createApp(ListRendering).mount('#list-rendering')
 在 Vue 中，组件本质上是一个具有预定义选项的实例。在 Vue 中注册组件很简单：如对 `App` 对象所做的那样创建一个组件对象，并将其定义在父级组件的 `components` 选项中：
 
 ```js
+<<<<<<< HEAD
 // 创建 Vue 应用
 const app = Vue.createApp(...)
 
 // 定义名为 todo-item 的新组件
 app.component('todo-item', {
+=======
+const TodoItem = {
+>>>>>>> 009706511b33add39286ad423ce0fac4c937f963
   template: `<li>This is a todo</li>`
+}
+
+// Create Vue application
+const app = Vue.createApp({
+  components: {
+    TodoItem // Register a new component
+  },
+  ... // Other properties for the component
 })
 
 // 挂载 Vue 应用
