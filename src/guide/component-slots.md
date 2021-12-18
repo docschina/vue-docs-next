@@ -2,6 +2,8 @@
 
 > This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
 
+<VideoLesson href="https://vueschool.io/lessons/vue-3-component-slots?friend=vuejs" title="Free Vue.js Slots lesson">Learn slot basics with a free lesson on Vue School</VideoLesson>
+
 ## Slot Content
 
 Vue implements a content distribution API inspired by the [Web Components spec draft](https://github.com/w3c/webcomponents/blob/gh-pages/proposals/Slots-Proposal.md), using the `<slot>` element to serve as distribution outlets for content.
@@ -90,7 +92,7 @@ The slot does **not** have access to `<todo-button>`'s scope. For example, tryin
   Clicking here will {{ action }} an item
   <!--
   The `action` will be undefined, because this content is passed
-  _to_ <todo-button>, rather than defined _inside_ the
+  to <todo-button>, rather than defined inside the
   <todo-button> component.
   -->
 </todo-button>
@@ -222,7 +224,7 @@ The rendered HTML will be:
 </div>
 ```
 
-Note that **`v-slot` can only be added to a `<template>`** (with [one exception](#abbreviated-syntax-for-lone-default-slots))
+Note that **`v-slot` can only be added to a `<template>`** (with [one exception](#abbreviated-syntax-for-lone-default-slots)).
 
 ## Scoped Slots
 
