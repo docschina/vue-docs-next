@@ -5,8 +5,6 @@
     @touchstart="onTouchStart"
     @touchend="onTouchEnd"
   >
-    <BannerTop v-if="showTopBanner" @close="closeBannerTop" />
-
     <Navbar v-if="shouldShowNavbar" @toggle-sidebar="toggleSidebar" />
 
     <div class="sidebar-mask" @click="toggleSidebar(false)" />
@@ -52,7 +50,6 @@ import Page from '@theme/components/Page.vue'
 import Sidebar from '@theme/components/Sidebar.vue'
 import BuySellAds from '@theme/components/BuySellAds.vue'
 import CarbonAds from '@theme/components/CarbonAds.vue'
-import BannerTop from '@theme/components/BannerTop.vue'
 import { resolveSidebarItems } from '../util'
 
 export default {
@@ -63,15 +60,15 @@ export default {
     Page,
     Sidebar,
     Navbar,
-    BannerTop,
     BuySellAds,
     CarbonAds
   },
 
   data() {
     return {
-      showTopBanner: false,
-      isSidebarOpen: false
+      isSidebarOpen: false,
+      isMenuFixed: false,
+      menuPosition: 0
     }
   },
 
@@ -115,8 +112,7 @@ export default {
         {
           'no-navbar': !this.shouldShowNavbar,
           'sidebar-open': this.isSidebarOpen,
-          'no-sidebar': !this.shouldShowSidebar,
-          'has-top-banner': this.showTopBanner
+          'no-sidebar': !this.shouldShowSidebar
         },
         userPageClass
       ]
@@ -131,8 +127,6 @@ export default {
     this.$router.afterEach(() => {
       this.isSidebarOpen = false
     })
-
-    this.showTopBanner = false
   },
 
   methods: {
