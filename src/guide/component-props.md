@@ -2,6 +2,8 @@
 
 > This page assumes you've already read the [Components Basics](component-basics.md). Read that first if you are new to components.
 
+<VideoLesson href="https://vueschool.io/lessons/vue-3-reusable-components-with-props?friend=vuejs" title="Free Vue.js Component Props Lesson">Learn how component props work with a free lesson on Vue School</VideoLesson>
+
 ## Prop Types
 
 So far, we've only seen props listed as an array of strings:
@@ -152,8 +154,8 @@ computed: {
 }
 ```
 
-::: tip Note
-Note that objects and arrays in JavaScript are passed by reference, so if the prop is an array or object, mutating the object or array itself inside the child component **will** affect parent state.
+::: warning Warning
+Note that objects and arrays in JavaScript are passed by reference, so if the prop is an array or object, mutating the object or array itself inside the child component **will** affect the parent state and Vue is unable to warn you against this. As a general rule, you should avoid mutating any prop, including objects and arrays as doing so ignores one-way data binding and may cause undesired results.
 :::
 
 ## Prop Validation
