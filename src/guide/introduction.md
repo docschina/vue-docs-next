@@ -52,7 +52,11 @@ const Counter = {
 Vue.createApp(Counter).mount('#counter')
 ```
 
+<<<<<<< HEAD
 我们已经成功创建了第一个 Vue 应用！看起来这跟渲染一个字符串模板非常类似，但是 Vue 在背后做了大量工作。现在数据和 DOM 已经被建立了关联，所有东西都是**响应式的**。我们要怎么确认呢？请看下面的示例，其中 `counter` property 每秒递增，你将看到渲染的 DOM 是如何变化的：
+=======
+We have already created our very first Vue app! This looks pretty similar to rendering a string template, but Vue has done a lot of work under the hood. The data and the DOM are now linked, and everything is now **reactive**. How do we know? Take a look at the example below where the `counter` property increments every second and you will see how the rendered DOM changes:
+>>>>>>> 0d4edfd784b0e96e075a5294c4474258b2eebd11
 
 ```js{8-10}
 const Counter = {
@@ -95,11 +99,19 @@ Vue.createApp(AttributeBinding).mount('#bind-attribute')
 
 <common-codepen-snippet title="Attribute dynamic binding" slug="KKpRVvJ" />
 
+<<<<<<< HEAD
 这里我们遇到了一点新东西。你看到的 `v-bind` attribute 被称为**指令**。指令带有前缀 `v-`，以表示它们是 Vue 提供的特殊 attribute。可能你已经猜到了，它们会在渲染的 DOM 上应用特殊的响应式行为。在这里，该指令的意思是：“_将这个元素节点的 `title` attribute 和当前活跃实例的 `message` property 保持一致_”。
+=======
+Here we're encountering something new. The `v-bind` attribute you're seeing is called a **directive**. Directives are prefixed with `v-` to indicate that they are special attributes provided by Vue, and as you may have guessed, they apply special reactive behavior to the rendered DOM. Here, we're basically saying "_keep this element's `title` attribute up-to-date with the `message` property on the current active instance._"
+>>>>>>> 0d4edfd784b0e96e075a5294c4474258b2eebd11
 
 ## 处理用户输入 {#handling-user-input}
 
+<<<<<<< HEAD
 为了让用户和应用进行交互，我们可以用 `v-on` 指令添加一个事件监听器，通过它调用在实例中定义的方法：
+=======
+To let users interact with our app, we can use the `v-on` directive to attach event listeners that invoke methods on our instances:
+>>>>>>> 0d4edfd784b0e96e075a5294c4474258b2eebd11
 
 ```html
 <div id="event-handling">
@@ -157,7 +169,11 @@ Vue.createApp(TwoWayBinding).mount('#two-way-binding')
 
 ## 条件与循环 {#conditionals-and-loops}
 
+<<<<<<< HEAD
 控制切换一个元素是否显示也相当简单：
+=======
+It's easy to toggle the presence of an element too:
+>>>>>>> 0d4edfd784b0e96e075a5294c4474258b2eebd11
 
 ```html
 <div id="conditional-rendering">
@@ -219,6 +235,7 @@ Vue.createApp(ListRendering).mount('#list-rendering')
 
 ![Component Tree](/images/components.png)
 
+<<<<<<< HEAD
 在 Vue 中，组件本质上是一个具有预定义选项的实例。在 Vue 中注册组件很简单：如对 `App` 对象所做的那样创建一个组件对象，并将其定义在父级组件的 `components` 选项中：
 
 ```js
@@ -227,7 +244,21 @@ const app = Vue.createApp(...)
 
 // 定义名为 todo-item 的新组件
 app.component('todo-item', {
+=======
+In Vue, a component is essentially an instance with pre-defined options. Registering a component in Vue is straightforward: we create a component object as we did with the `app` object and we define it in the parent's `components` option:
+
+```js
+const TodoItem = {
+>>>>>>> 0d4edfd784b0e96e075a5294c4474258b2eebd11
   template: `<li>This is a todo</li>`
+}
+
+// Create Vue application
+const app = Vue.createApp({
+  components: {
+    TodoItem // Register a new component
+  },
+  ... // Other properties for the component
 })
 
 // 挂载 Vue 应用
@@ -246,10 +277,10 @@ app.mount(...)
 但是这样会为每个待办项渲染同样的文本，这看起来并不炫酷。我们应该能将数据从父组件传入子组件才对。让我们来修改一下组件的定义，使之能够接受一个 [prop](component-basics.html#通过-prop-向子组件传递数据)：
 
 ```js
-app.component('todo-item', {
+const TodoItem = {
   props: ['todo'],
   template: `<li>{{ todo.text }}</li>`
-})
+}
 ```
 
 现在，我们可以使用 `v-bind` 指令将待办项传到循环输出的每个组件中：
@@ -273,6 +304,11 @@ app.component('todo-item', {
 ```
 
 ```js
+const TodoItem = {
+  props: ['todo'],
+  template: `<li>{{ todo.text }}</li>`
+}
+
 const TodoList = {
   data() {
     return {
@@ -282,22 +318,24 @@ const TodoList = {
         { id: 2, text: 'Whatever else humans are supposed to eat' }
       ]
     }
+  },
+  components: {
+    TodoItem
   }
 }
 
 const app = Vue.createApp(TodoList)
-
-app.component('todo-item', {
-  props: ['todo'],
-  template: `<li>{{ todo.text }}</li>`
-})
 
 app.mount('#todo-list-app')
 ```
 
 <common-codepen-snippet title="Intro-Components-1" slug="VwLxeEz" />
 
+<<<<<<< HEAD
 尽管这只是一个刻意设计的例子，但是我们已经设法将应用分割成了两个更小的单元。子单元通过 prop 接口与父单元进行了良好的解耦。我们现在可以进一步改进 `<todo-item>` 组件，提供更为复杂的模板和逻辑，而不会影响到父应用。
+=======
+This is a contrived example, but we have managed to separate our app into two smaller units, and the child is reasonably well-decoupled from the parent via the props interface. We can now further improve our `<todo-item>` component with a more complex template and logic without affecting the parent app.
+>>>>>>> 0d4edfd784b0e96e075a5294c4474258b2eebd11
 
 <<<<<<< HEAD
 在一个大型应用中，有必要将整个应用程序划分为多个组件，以使开发更易管理。在[后续教程](component-basics.md)中我们将详述组件，不过这里有一个 (假想的) 例子，以展示使用了组件的应用模板是什么样的：
