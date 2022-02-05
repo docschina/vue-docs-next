@@ -67,7 +67,7 @@ It would be much nicer if we could collocate code related to the same logical co
 
 ## Basics of Composition API
 
-Now that we know the **why** we can get to the **how**. To start working with the Composition API we first need a place where we can actually use it. In a Vue component, we call this place the `setup`.
+Now that we know the **why**, we can get to the **how**. To start working with the Composition API we first need a place where we can actually use it. In a Vue component, we call this place the `setup`.
 
 ### `setup` Component Option
 
@@ -320,7 +320,7 @@ import { ref, onMounted, watch, toRefs } from 'vue'
 
 // in our component
 setup (props) {
-  // using `toRefs` to create a Reactive Reference to the `user` property of props
+  // using `toRefs` to create a Reactive Reference to the `user` property of `props`
   const { user } = toRefs(props)
 
   const repositories = ref([])
