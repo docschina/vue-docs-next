@@ -131,6 +131,31 @@ import * as Form from './form-components'
 </template>
 ```
 
+## Using Custom Directives
+
+Globally registered custom directives just work as expected, and local ones can be used directly in the template, much like we explained above for components. 
+
+But there's one restriction to be aware of: You must name local custom directives according to the following schema: `vNameOfDirective` in order for them to be directly usable in the template.
+
+```html
+<script setup>
+const vMyDirective = {
+  beforeMount: (el) => {
+    // do something with the element
+  }
+}
+</script>
+<template>
+  <h1 v-my-directive>This is a Heading</h1>
+</template>
+```
+```html
+<script setup>
+  // imports also work, and can be renamed to fit the required naming schema
+  import { myDirective as vMyDirective } from './MyDirective.js'
+</script>
+```
+
 ## `defineProps` and `defineEmits`
 
 To declare `props` and `emits` in `<script setup>`, you must use the `defineProps` and `defineEmits` APIs, which provide full type inference support and are automatically available inside `<script setup>`:
@@ -198,7 +223,7 @@ const attrs = useAttrs()
 `<script setup>` can be used alongside normal `<script>`. A normal `<script>` may be needed in cases where you need to:
 
 - Declare options that cannot be expressed in `<script setup>`, for example `inheritAttrs` or custom options enabled via plugins.
-- Declaring named exports.
+- Declaring named exports (including TypeScript types).
 - Run side effects or create objects that should only execute once.
 
 ```vue
@@ -218,6 +243,10 @@ export default {
 </script>
 ```
 
+:::warning
+`render` function is not supported in this scenario. Please use one normal `<script>` with `setup` option instead.
+:::
+
 ## Top-level `await`
 
 Top-level `await` can be used inside `<script setup>`. The resulting code will be compiled as `async setup()`:
@@ -235,6 +264,23 @@ In addition, the awaited expression will be automatically compiled in a format t
 :::
 
 ## TypeScript-only Features
+
+### Additional type exports
+
+As noted above, in order to export additional types from an SFC, they must be moved to an additional `<script>` block alongside the `<script setup>` block.
+
+For example
+```vue
+<script lang="ts">
+export type SizeOptions = 'small' | 'medium' | 'large';
+</script>
+
+<script lang="ts" setup>
+defineProps({
+  size: { type: String as PropType<SizeOptions> },
+})
+</script>
+```
 
 ### Type-only props/emit declarations
 
